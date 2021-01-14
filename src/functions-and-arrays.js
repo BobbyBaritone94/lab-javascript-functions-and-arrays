@@ -44,6 +44,53 @@ function sumNumbers (numbers) {
   return sumN
 }
 
+const mixedArr = 
+[6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+
+
+function sum(mixedArr){
+  let total=0;
+
+
+//array is empty
+if (mixedArr.length < 1 || undefined)
+{
+  return 0;
+}  
+
+//Convert words to their respective 
+//int values and place back into the array
+  for (let i = 0; i < mixedArr.length ; i++)
+  {
+    if (typeof mixedArr[i] === 'string')
+    {
+      mixedArr[i]=mixedArr[i].length
+    }
+
+    // Checks if array has an unsupported data type
+    if(typeof mixedArr[i] !== 'string')
+    {
+      if(isNaN(mixedArr[i]))
+      {
+        throw new Error("Unsupported data type sir or ma'am");
+        return;
+      }
+    }
+    
+  }
+
+  //Find sum of new array
+  for (let i = 0; i < mixedArr.length ; i++)
+  {
+    total = total + mixedArr[i]
+  }
+
+  return total;
+
+}
+
+
 
 
 // Iteration #4: Calculate the average
@@ -193,30 +240,31 @@ const matrixa = [
 
 
 const matrix = [
-  [1, 2, 1, 1, 1],
+  [1, 2, 2, 1, 1],
   [1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1],
   [1, 1, 1, 1, 1],
 ]
-function greatestProduct(mat) {
-  let max = 0;
 
-  for (let y = 0; y < mat.length; y++) {
-    let rowProd = 1
-    let colProd = 1
-    for (let x = 0; x < mat.length; x++) {
-      for (let i = 0; i < 4; i++) {
-        rowProd *= mat[y][x+i] || 0
+// function greatestProduct(mat) {
+//   let max = 0;
 
-        if (mat[y+i])
-          colProd *= mat[y+i][x] || 0
-      }
-      max = Math.max(max, rowProd, colProd)
-    }
-  }
+//   for (let y = 0; y < mat.length; y++) {
+//     let rowProd = 1
+//     let colProd = 1
+//     for (let x = 0; x < mat.length; x++) {
+//       for (let i = 0; i < 4; i++) {
+//         rowProd *= mat[y][x+i] || 0
 
-  return max
-}
+//         if (mat[y+i])
+//           colProd *= mat[y+i][x] || 0
+//       }
+//       max = Math.max(max, rowProd, colProd)
+//     }
+//   }
 
-console.log(greatestProduct(matrix))
+//   return max
+// }
+
+// console.log(greatestProduct(matrix))
