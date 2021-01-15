@@ -97,7 +97,7 @@ if (mixedArr.length < 1 || undefined)
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers(ArrayToBeAveraged){
+function averageNumbers(ArrayTobeAveraged){
   if(ArrayTobeAveraged.length===0){
     return null
   }
@@ -121,6 +121,27 @@ function averageWordLength(ArrayOfWords){
     totalWordsLetters += ArrayOfWords[i].length;
   }
   return totalWordsLetters/lenArray
+}
+
+
+//Bonus average of mixed array
+function avg(arr){
+  if(arr.length===0){
+    return null
+  }
+  let newArray = []
+  for (let i = 0; i < arr.length ; i++)
+  { 
+    if (typeof arr[i]==='string')
+    {
+      newArray.push(arr[i].length)
+    }else{
+      newArray.push(arr[i]);
+    }
+  }
+
+  return (Math.round((averageNumbers(newArray) + Number.EPSILON) * 100) / 100)
+
 }
 
 
@@ -213,6 +234,21 @@ const wordsCount = [
   'matter'
 ];
 
+function howManyTimes(wordsCountList,countWord) {
+  if (wordsCount == 0 ){
+    return null
+  }
+  let counter = 0;
+  for (let i = 0; i < wordsCountList.length; i++)
+  {
+    if(countWord==wordsCountList[i])
+    {
+      counter++;
+    }
+  }
+  return counter;
+}
+
 // Iteration #8: Bonus
 
 const matrixa = [
@@ -238,14 +274,60 @@ const matrixa = [
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-
-const matrix = [
-  [1, 2, 2, 1, 1],
-  [1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1],
-  [1, 1, 1, 1, 1],
+const matrixb = [
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 ,2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
+  [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]
 ]
+
+
+
+function greatestProduct(mat){
+  let max = 0;
+  let rowProd = 1
+  let colProd = 1
+
+  for (let y= 0; y < (mat.length-4); y++)
+  {
+    rowProd = 1
+    colProd = 1
+    for (let x = 0; x < (mat.length-4); x++)
+    {
+      rowProd = 1
+      colProd = 1
+      for (let i = 0; i < 4 ; i++)
+      {
+        rowProd *= mat[y][x+i] 
+        colProd *= mat[y+i][x]
+       
+        max = Math.max(max, rowProd, colProd)
+       
+      }
+    }
+  }
+
+  return max
+
+}
+
+console.log(greatestProduct(matrixb))
 
 // function greatestProduct(mat) {
 //   let max = 0;
